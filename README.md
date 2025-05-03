@@ -4,7 +4,7 @@
 Home Harmony...
 ### Components
 #### Folders
-- migrations:  Contains the sql file for creation of all tables and triggers associated with the database
+- migrations:  Contains the sql file **step1:create_tables.sql** for creation of all tables and triggers associated with the database
 - static:  Contains Javascript and CSS files
     -  images:  Contains images used by the application itself
     -  uploads:  Temporary storage for images uploaded by the user
@@ -49,3 +49,13 @@ Home Harmony...
     Deryn Brown
 
     Deryn.2017@gmail.com
+
+## How to Run
+1. Clone repository
+2. Create harmony.db in top level folder
+3. Run **step1.create_tables.sql** against **harmony.db** to create tables (or create database and tables in a tool such as DB Browswer for SQLite using above schema)
+5. Create virtual environment `python -m venv .venv`
+6. Activate virtual environment `.venv/Scripts/Activate on Windows`
+7. Install dependencies `pip install fastapi[standard] PyJWT, passlib, jinja2, sqlite`
+8. Run with command `fastapi dev app.py`
+9. Navigate to `127.0.0.1:8000`
