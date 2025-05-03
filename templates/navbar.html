@@ -1,0 +1,22 @@
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <ul>
+        <li><a href="/home">Home</a></li>
+        <div class="dropdown">
+            <button style="font-size: 20px;" class="dropbtn">Rooms<i class=fa fa-caret-down></i></button>
+            <div class="dropdown-content">
+              <li><a href="/rooms">See Rooms</a></li>
+              <li><a href="/add_room">Add a Room</a></li>
+            </div>
+          </div>
+        <li><a href="/all_images">Images</a></li>
+        <li><a href> | </a> </li>
+        <li><a href="/get_account">Account</a></li>
+        <li><a href="/contact">Contact</a></li>
+        {% if login %}
+          <li style="float:right"><a href="/logout">Logout</a></li>
+        {% else %}
+          <li style="float:right"><a href="/">Login</a></li>
+        {% endif %}
+    </ul>
+</nav>

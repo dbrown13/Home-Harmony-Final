@@ -1,0 +1,57 @@
+<!-- Change Account Page on Navigation Bar -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Harmony - Update Account</title>
+    <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+    <br>
+    <div class="columns">
+        <div class="column">
+            <figure class="logo">
+                <img class="logo" width="150" src="static/images/HomeHarmonyLogo.jpg" />
+            </figure>
+            <br>
+            <h1 class="title">Update Account Information</h1>
+            {% include "./navbar.html" %}
+        </div>
+    </div>
+    <hr>
+    <h4>Update username, password or both</h4>
+    <div class="login-form">
+        <div class="login-field">
+            <form action="/account" method="post">
+                <div class="login">
+                    <p>Update username if desired</p>
+                    <label class="label" for="username">Username</label>
+                    <div class="control">
+                        <input class="input" type="text" name="username" value="{{user.username }}"   required>
+                    </div>
+                </div>
+                <div class="field">
+                    <p>Enter new password or leave blank to keep existing</p>
+                    <label class="label" for="password">New Password</label>
+                    <div class="control">
+                        <input class="input" type="password" name="password" placeholder="Enter new password ...">
+                    </div>
+                </div>
+                <br>
+                <input class="button" type="submit" value="Update Account">
+                <input class="button" type="button" value="Return" onclick="window.location.href='/home'">
+                <a href="/delete_account" class="delete-button" type="button" onclick="return confirm('Are you sure you want to delete your account?');">Delete Account</a>
+                <br>
+            </form>
+            {% if taken %}
+                <div><b>Username {{ username }} is taken.  Pick a new username.</b></div>
+            {% endif %}
+            {% if success %}
+                <div><b>Account updated successfully!</b></div>
+            {% endif %}
+        </div>
+    </div>
+    <br>
+</body>
+</html>
