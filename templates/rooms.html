@@ -1,0 +1,50 @@
+<!-- Room Page -->
+<html>
+  <head>
+    <title>Home Harmony</title>
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    <figure>
+      <img class="logo" width="150" src="/static/images/HomeHarmonyLogo.jpg"/>
+    </figure>
+    <br>
+    <h1>Home Harmony</h1>
+    {% include "./navbar.html" %}
+    <main>
+      <h3>Design your Room</h3>
+      {% if rooms|length > 0 %}
+        {% for room in rooms%}
+        <div class="card">
+          <div class="card-container">
+            <h4>Room: {{ room.room_name }}</h4>
+            <p>Description: {{ room.room_desc }}</p>
+
+            <a href="/edit_room/{{ room.room_id }}" class="button">Edit</a>
+            <a href="/delete_room/{{ room.room_id }}" class="button" onclick="return confirm('Are you sure you want to delete this room?')">Delete</a>
+          </div>
+        </div>
+        <br>
+        {% endfor %}
+      {% else %}
+        <p>You have no designs.  Click the button below to make one!</p>
+      {% endif %}
+      {% if success %}
+        <div><b>Room added successfully!</b></div>
+      {% endif %}
+      {% if delete_success %}
+        <div><b>Room deleted successfully!</b></div>
+      {% endif %}
+      <br>
+      <hr>
+      <br>
+      <div class="image-preview">
+        <form action="/add_room" method="get">
+          <button class="open-button" type="submit">Design a Room</button>
+          <br></br>
+        </form>
+      </div>
+    </main>
+    <script src="/static/rooms.js"></script>
+  </body>
+</html>

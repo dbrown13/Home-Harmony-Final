@@ -1,0 +1,50 @@
+<!-- Signup Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Harmony - Sign Up</title>
+    <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+    <br>
+    <div class="columns">
+        <div class="column">
+            <figure class="logo">
+                <img class="logo" width="150" src="static/images/HomeHarmonyLogo.jpg" />
+            </figure>
+            <br>
+            <h1 class="title">Sign up for Home Harmony!</h1>
+        </div>
+    </div>
+    <hr>
+    <div class="login-form">
+        <div class="login-field">
+            <form action="/signup" method="post">
+                <div class="login">
+                    <label class="label" for="username">Username</label>
+                    <div class="control">
+                        <input class="input" type="text" name="username" placeholder="Enter username ...">
+                    </div>
+                </div>
+                <br><br>
+                <div class="field">
+                    <label class="label" for="password">Password (8 - 12 characters)</label>
+                    <div class="control">
+                        <input class="input" type="password" name="password" minlength="8" maxlength="12" placeholder="Enter password ...">
+                    </div>
+                </div>
+                <br>
+                <input class="button" type="submit">
+            </form>
+            <br>
+            {% if taken %}
+                <div><p><b>Username {{ username }} is taken.  Pick a new username.</b></p></div>
+            {% endif %}
+            <hr>
+            <p>Already signed up?  <a href="/">Log in here!</a></p>
+        </div>
+    </div>
+</body>
+</html>
