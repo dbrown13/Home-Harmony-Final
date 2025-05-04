@@ -40,16 +40,18 @@
             </form>
             {% if incorrect_username %}
                 <div>
-                    <p><b>Username not found. Please try again.</b></p>
+                    <p class="sysmsg-neg"><i>Username not found.</i></p>
                 </div>
             {% elif incorrect_password %}
                 <div>
-                    <p><b>Password incorrect. Please try again.</b></p>
+                    <p class="sysmsg-neg"><i>Password incorrect.</i></p>
                 </div>
             {% elif signup %}
                 <div>
-                    <p><b>Account created successfully! Please log in.</b></p>
+                    <p class="sysmsg-pos"><i>Account created.</i></p>
                 </div>
+            {% else %}
+                <div><p></p></div>
             {% endif %}
             <hr>
             <p>No account?  <a href="/signup">Sign up here!</a></p>

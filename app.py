@@ -11,15 +11,18 @@ from typing import Annotated
 from sqlite3 import Connection, Row
 from database import get_user_rooms, get_room_by_id, create_user, get_user, get_user_by_id, delete_user, delete_room_by_id
 from database import create_new_room, insertBLOB, readBlobData_by_room_id, readBlobData_by_id, update_room_by_id, delete_image_by_id
-from database import readBlobData_inner_join, delete_uploaded_images
+from database import readBlobData_inner_join
 from database import update_image_by_id, update_user
 from models import UserRoomId, UserHashed, UserID, UserImage, Room, ImageUpdate
+from util import delete_uploaded_images, send_email
 from secrets import token_hex
 from passlib.hash import pbkdf2_sha256
 import jwt as jwt
 from pathlib import Path
 import os
 import base64
+import random
+import string
 
 # Initialize FastAPI
 app = FastAPI()
@@ -702,6 +705,7 @@ async def contact(
         if user_id:
             user_id = user_id["user_id"]
     context["user_id"] = user_id
+
     return templates.TemplateResponse(request, "./contact.html", context=context)
 
 """
@@ -715,5 +719,15 @@ async def contact(
     email: Annotated[str, Form()],
     message: Annotated[str, Form()]
 )->HTMLResponse:
-       context = {'submitted': True, 'email': email,'message': message, 'login': True}
-       return templates.TemplateResponse(request, "./contact.html", context=context)
+       
+    rand_str = ''.join(random.choices(string.ascii_letters + string.digits, k=8))
+    print(f"rand_str = {rand_str}")
+    print(f"{UPLOAD_DIR}")
+    upload_file = str(UPLOAD_DIR) + '\\' + rand_str + ".txt"
+    print(f"upload file: {upload_file}")
+    with open(upload_file, mode="w") as f:
+        f.write(message)
+    # This doesn't work right now
+    #send_email(email, upload_file)  
+    context = {'submitted': True, 'email': email,'message': message, 'login': True}
+    return templates.TemplateResponse(request, "./contact.html", context=context)

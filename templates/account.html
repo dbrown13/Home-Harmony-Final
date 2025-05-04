@@ -32,10 +32,10 @@
                     </div>
                 </div>
                 <div class="field">
-                    <p>Enter new password or leave blank to keep existing</p>
+                    <p>Enter new password (8 - 12 characters) or leave blank to keep existing</p>
                     <label class="label" for="password">New Password</label>
                     <div class="control">
-                        <input class="input" type="password" name="password" placeholder="Enter new password ...">
+                        <input class="input" type="password" name="password" placeholder="Enter new password ..." minlength="8" max="12">
                     </div>
                 </div>
                 <br>
@@ -45,10 +45,14 @@
                 <br>
             </form>
             {% if taken %}
-                <div><b>Username {{ username }} is taken.  Pick a new username.</b></div>
+                <div>
+                    <p class="sysmsg-neg"><i>Username {{ username }} is taken.  Pick a new username.</i></p>
+                </div>
             {% endif %}
             {% if success %}
-                <div><b>Account updated successfully!</b></div>
+                <div>
+                    <p class="sysmsg-pos"><i>Account updated successfully!</i></p>
+                </div>
             {% endif %}
         </div>
     </div>

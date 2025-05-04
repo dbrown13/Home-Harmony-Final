@@ -615,26 +615,8 @@ def delete_image_by_id(
         print("Error deleting image from the table", error)
         return False
 
-"""
-    This function deletes all images from the database by user_id.
-    Parameters:
-        connection (Connection): The database connection to use.
-        user_id (int): The id of the user whose images to delete.
-    Returns:
-        bool: True if all images were deleted successfully, False otherwise.
-"""    
-def delete_uploaded_images() -> None:
-    dir_path = os.path.relpath('static/uploads', start=current_directory)
-    print(f"relative path: {dir_path}")
-    for filename in os.listdir(dir_path):
-        file_path = os.path.join(dir_path, filename)
-        try:
-            if os.path.isfile(file_path) or os.path.islink(file_path):
-                os.unlink(file_path)
-            elif os.path.isdir(file_path):
-                shutil.rmtree(file_path)
-        except Exception as e:
-            print(f"Failed to delete {file_path}. Reason: {e}")
+
+
     
 if __name__ == "__main__":
     connection = sqlite3.connect('harmony.db')
