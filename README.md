@@ -1,7 +1,7 @@
 # Home-Harmony-Final
 ## Deryn Brown - Capstone Project for Maryville University COCS498
 ### Application Description
-Home Harmony...
+Home Harmony is an interior design application that assists users in collecting, organizing, and managing their home design ideas.  This application allows users to create rooms, choose colors, and upload inspiration photos.  The app includes an authorized logon, account management, contact form, and a chatbot to assist with design.
 ### Components
 #### Folders
 - migrations:  Contains the sql file **step1:create_tables.sql** for creation of all tables and triggers associated with the database
