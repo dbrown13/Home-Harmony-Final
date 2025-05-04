@@ -56,6 +56,6 @@ Home Harmony...
 3. Run **step1.create_tables.sql** against **harmony.db** to create tables (or create database and tables in a tool such as DB Browswer for SQLite using above schema)
 5. Create virtual environment `python -m venv .venv`
 6. Activate virtual environment `.venv/Scripts/Activate on Windows`
-7. Install dependencies `pip install fastapi[standard] PyJWT, passlib, jinja2, sqlite`
+7. Install dependencies `pip install fastapi[standard] PyJWT, passlib`
 8. Run with command `fastapi dev app.py`
 9. Navigate to `127.0.0.1:8000`
